@@ -34,9 +34,9 @@ else:
     if today in birthday_dict:
         file_path = f"./letter_templates/card_{random.randint(1,3)}.txt"
         birthday_record = birthday_dict[today]
-        for index in range(0,len(birthday_record)):
+        for item in birthday_record:
             with open(file_path) as letter_file:
                 contents = letter_file.read()
-                contents = contents.replace("[NAME]", birthday_record[index]["name"])
-                to_email = birthday_record[index]["email"]
+                contents = contents.replace("[NAME]", item["name"])
+                to_email = item["email"]
                 send_email(to_email)
